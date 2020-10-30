@@ -12,7 +12,7 @@ country-by-country data on mortality risk of the COVID-19 pandemic.
 We will also look into adding new features to this dataset. There is demographic
 information available that might prove useful for the predictors. For instance we
 found the data set of the share of people who say they trust the national government
-very interesting: [https://ourworldindata.org/mortality-risk-covid](https://ourworldindata.org/grapher/share-who-trust-government).
+very interesting: [https://ourworldindata.org/grapher/share-who-trust-government](https://ourworldindata.org/grapher/share-who-trust-government).
 Even though this data set does not contain all the countries in the world, we will add
 it to the main data set.
 
