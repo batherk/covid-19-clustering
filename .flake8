@@ -1,5 +1,5 @@
 [flake8]
-max-line-length = 100
+max-line-length = 120
 
 inline-quotes = "double"
 
@@ -11,8 +11,7 @@ dictionaries=en_US, python, technical
 
 
 ignore =
-    # Ignore the flake8-warnings that are incompatible with Black-formatting
-    E203, E231, W503
+    W503
 
     # Ignore Bugbear line-length warning as flake8 handles this
     B950
