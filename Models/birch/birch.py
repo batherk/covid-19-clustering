@@ -6,7 +6,7 @@ from sklearn.cluster import Birch
 data = pd.read_csv('../../Data/Processed/processed.csv')
 
 # Initialize Birch model
-birch = Birch(n_clusters=None)
+birch = Birch(n_clusters=20)
 
 # Fit data to model and predict labels for data
 birch.fit_predict(data)
