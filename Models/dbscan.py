@@ -4,7 +4,7 @@ from sklearn.cluster import DBSCAN
 from sklearn.metrics.cluster import contingency_matrix
 
 # Read the processed data from our EDA
-data = pd.read_csv('../../Data/Processed/processed.csv')
+data = pd.read_csv('../Data/Processed/processed.csv')
 
 # Initialize DBSCAN model
 dbscan = DBSCAN(eps=2, min_samples=2)
