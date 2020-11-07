@@ -3,7 +3,7 @@ import numpy as np
 from sklearn.cluster import Birch
 
 # Read the processed data from our EDA
-data = pd.read_csv('../../Data/Processed/processed.csv')
+data = pd.read_csv('../Data/Processed/processed.csv')
 
 # Initialize Birch model
 birch = Birch(n_clusters=20)

@@ -3,7 +3,7 @@ import numpy as np
 from sklearn.cluster import SpectralClustering
 
 # Read the processed data from our EDA
-data = pd.read_csv('../../Data/Processed/processed.csv')
+data = pd.read_csv('../Data/Processed/processed.csv')
 
 # Initialize Spectral Clusering model
 sc = SpectralClustering(
