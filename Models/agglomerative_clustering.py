@@ -2,7 +2,7 @@ import pandas as pd
 from sklearn.cluster import AgglomerativeClustering
 
 # Read the processed data from our EDA
-data = pd.read_csv('../../Data/Processed/processed.csv')
+data = pd.read_csv('../Data/Processed/processed.csv')
 
 # Initialize Hierarchical clustering with Agglomerative clustering
 ac = AgglomerativeClustering(n_clusters=20)

@@ -2,7 +2,7 @@ import pandas as pd
 from sklearn.cluster import KMeans
 
 # Read the processed data from our EDA
-data = pd.read_csv('../../Data/Processed/processed.csv')
+data = pd.read_csv('../Data/Processed/processed.csv')
 
 # Initialize KMeans
 k_means = KMeans(n_clusters=20)
