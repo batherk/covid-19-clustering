@@ -2,4 +2,4 @@ import pandas as pd
 
 
 def mapIndexToLocation(index):
-    return pd.read_csv('../Data/Clean/cleaned.csv')['location'].get(index)
+    return pd.read_csv('../Data/Raw/locations.csv')['location'].get(index)
