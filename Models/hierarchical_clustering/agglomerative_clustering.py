@@ -1,7 +1,5 @@
 import pandas as pd
-import numpy as np
 from sklearn.cluster import AgglomerativeClustering
-from sklearn.metrics.cluster import contingency_matrix
 
 # Read the processed data from our EDA
 data = pd.read_csv('../../Data/Processed/processed.csv')
