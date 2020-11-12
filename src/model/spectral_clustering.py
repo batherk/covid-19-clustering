@@ -1,12 +1,12 @@
 import pandas as pd
-import numpy as np
 from sklearn.cluster import SpectralClustering
+import joblib
 
 # Read the processed data from our EDA
-data = pd.read_csv('../Data/Processed/processed.csv')
+X = pd.read_csv('data/processed/processed.csv')
 
 # Initialize Spectral Clusering model
-sc = SpectralClustering(
+spectral_clustering = SpectralClustering(
     n_clusters=20,
     affinity='nearest_neighbors',
     n_init=100,
@@ -14,9 +14,12 @@ sc = SpectralClustering(
 )
 
 # Fit data to model and predict labels for data
-sc.fit_predict(data)
+spectral_clustering.fit_predict(X)
 
 # Get the predicted labels (clusters) for each row of our dataset
-y_pred = sc.labels_.astype(np.int)
+y_pred = spectral_clustering.labels_
 
 print(y_pred)
+
+joblib_filename = 'models/spectral_clustering.joblib'
+joblib.dump(spectral_clustering, joblib_filename)
