@@ -50,7 +50,7 @@ The files found in the `notebooks` folder are jupyter notebooks.
 
 ```
 📂covid-19-clustering
-┣ 📁.github (CI config)folder
+┣ 📁.github (CI config)
 ┣ 📁.vscode (editor config)
 ┣ 📁data (raw and processed csv files)
 ┣ 📁models (persisted models with metadata)
