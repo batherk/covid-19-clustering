@@ -1,40 +1,70 @@
-# Which problem are you addressing?
-The coronavirus disease has turned the world upside down and continues to wreak
-havoc into late 2020. Different countries faced the pandemic with various starting
-points when it comes to public health, healthcare spending, life expectancy, etc.
-We want to use clustering to look for hidden patterns in aggregated COVID-19 data
-for different countries.
+<div align="center">
+    <img width="400" src="https://innsida.ntnu.no/documents/10157/2546401449/ntnu_hoeyde_eng.png/9130ea3c-828a-497e-b469-df0c54e16bb5?t=1578568440350" />
+</div>
 
-# Which dataset do you plan to use in your projects?
-We plan to use the "Mortality risk of COVID-19"-dataset from Our World in Data
+# COVID-19 Clustering
+
+![Python CI](https://github.com/batherk/covid-19-clustering/workflows/Python%20CI/badge.svg)
+
+This is a part of the course TDT4173 - Machine Learning at NTNU. The project proposal [is available here](project_proposal.md).
+
+Clustering methods being evaluated:
+
+- Agglomerative Clustering
+- BIRCH
+- DBSCAN
+- k-Means
+- Spectral Clustering
+
+## Data set
+
+This project uses the "Mortality risk of COVID-19"-dataset from Our World in Data
 [https://ourworldindata.org/mortality-risk-covid](https://ourworldindata.org/mortality-risk-covid). The dataset contains
 country-by-country data on mortality risk of the COVID-19 pandemic.
-We will also look into adding new features to this dataset. There is demographic
-information available that might prove useful for the predictors. For instance we
-found the data set of the share of people who say they trust the national government
-very interesting: [https://ourworldindata.org/grapher/share-who-trust-government](https://ourworldindata.org/grapher/share-who-trust-government).
-Even though this data set does not contain all the countries in the world, we will add
-it to the main data set.
 
-# Which machine learning methods do you plan to apply?
-We want to use the following clustering methods:
+# Installation guide
 
-- k-means
-- Mean-shift
-- Birch
-- Hierarchical clustering
-- Spectral clustering
+## Prerequisites
 
-# What kind of experiments do you plan to run?
-We will start off by doing an exploratory data analysis (EDA) of our dataset. The aim
-here is to detect missing values, duplicate features, and outliers. We will then
-explore individual features and groups of features. Based on the EDA we will do a
-data cleanup (imputing, standardizing, drop features, one-hot-encoding etc). The
-reporting of COVID-cases has varied substantially between countries, so EDA will be
-important ahead of any prediction.
+- Python (version 3.8 or higher)
+- Some kind of package manager. We recomend using [anaconda](https://www.anaconda.com/products/individual) or the default [pip](https://pip.pypa.io/en/stable/).
 
-After the cleanup we will continue with our prediction. The aim here is to run our
-dataset through the clustering algorithms mentioned above. As part of our
-interpretation we will compare the results of the method against COVID-deaths per
-million and COVID-cases per million. We also plan to try different implementations of
-the methods, e.g. initializing k-means with k-means++ and random initialization.
+## Installing dependencies
+
+If you are using anaconda, run the following at the command-line:
+
+```
+conda install --file requirements.txt
+```
+
+If you are using pip, run the following at the command-line:
+
+```
+pip install -r requirements.txt
+```
+
+# File strucure
+
+The files found in the `notebooks` folder are jupyter notebooks.
+`data` contains raw csv files, as well as processed.
+
+```
+📂covid-19-clustering
+┣ 📁.github (CI config)
+┣ 📁.vscode (editor config)
+┣ 📁data (raw and processed csv files)
+┣ 📁models (persisted models with metadata)
+┣ 📁notebooks (jupyter notebooks)
+┣ 📁results (clustering assignement and metrics for each model)
+┣ 📁src
+┃ ┣ 📂model (Python scripts for training and presisting the models)
+┃ ┣ 📜__init__.py
+┃ ┣ 📜utils.py
+┃ ┣ 📜visualization.py
+┣ 📁tests
+┣ 📜.flake8
+┣ 📜.gitignore
+┣ 📜project_proposal.md
+┣ 📜README.md (this file)
+┣ 📜requirements.txt (3rd-party packages)
+```
