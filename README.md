@@ -9,11 +9,12 @@
 This is a part of the course TDT4173 - Machine Learning at NTNU. The project proposal [is available here](project_proposal.md).
 
 Clustering methods being evaluated:
-─ Agglomerative Clustering
-─ BIRCH
-─ DBSCAN
-─ k-Means
-─ Spectral Clustering
+
+- Agglomerative Clustering
+- BIRCH
+- DBSCAN
+- k-Means
+- Spectral Clustering
 
 ## Data set
 
