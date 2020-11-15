@@ -1,12 +1,19 @@
 <div align="center">
-    <img width="200" src="https://innsida.ntnu.no/documents/10157/2546401449/ntnu_hoeyde_eng.png/9130ea3c-828a-497e-b469-df0c54e16bb5?t=1578568440350" />
+    <img width="400" src="https://innsida.ntnu.no/documents/10157/2546401449/ntnu_hoeyde_eng.png/9130ea3c-828a-497e-b469-df0c54e16bb5?t=1578568440350" />
 </div>
 
-# COVID-19 Clustering comparison
+# COVID-19 Clustering
 
 ![Python CI](https://github.com/batherk/covid-19-clustering/workflows/Python%20CI/badge.svg)
 
-This is a part of the course TDT4173 - Machine Learning at NTNU.
+This is a part of the course TDT4173 - Machine Learning at NTNU. The project proposal [is available here](project_proposal.md).
+
+Clustering methods being evaluated:
+─ Agglomerative Clustering
+─ BIRCH
+─ DBSCAN
+─ k-Means
+─ Spectral Clustering
 
 ## Data set
 
@@ -18,18 +25,18 @@ country-by-country data on mortality risk of the COVID-19 pandemic.
 
 ## Prerequisites
 
-- Python 3.8 (or newer)
-- pip
+- Python (version 3.8 or higher)
+- Some kind of package manager. We recomend using [anaconda](https://www.anaconda.com/products/individual) or the default [pip](https://pip.pypa.io/en/stable/).
 
 ## Installing dependencies
 
-If you are using conda, run the following at the command-line:
+If you are using anaconda, run the following at the command-line:
 
 ```
 conda install --file requirements.txt
 ```
 
-If you have a virtual environment (venv) activated (or none at all), run the following at the command-line:
+If you are using pip, run the following at the command-line:
 
 ```
 pip install -r requirements.txt
@@ -59,5 +66,4 @@ The files found in the `notebooks` folder are jupyter notebooks.
 ┣ 📜project_proposal.md
 ┣ 📜README.md (this file)
 ┣ 📜requirements.txt (3rd-party packages)
-
 ```
