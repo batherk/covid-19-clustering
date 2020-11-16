@@ -1,4 +1,3 @@
-import pathmagic  # noqa
 from src.utils import mapIndexToLocation
 
 

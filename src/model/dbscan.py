@@ -1,5 +1,3 @@
-# type: ignore
-import pathmagic  # noqa
 import joblib
 import pandas as pd
 from datetime import datetime
