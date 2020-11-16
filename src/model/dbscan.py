@@ -19,9 +19,6 @@ model = dict({
         'hyperparameters': {
             'eps': eps,
             'min_samples': min_samples
-        },
-        'metrics': {
-            'silhouette coefficient': 0
         }
     }
 })
@@ -29,10 +26,11 @@ model = dict({
 # Read the processed data from the EDA
 X = pd.read_csv('data/processed/processed.csv')
 
-# Train model
+# Cluster and save results
 dbscan.fit_predict(X)
-y_pred = dbscan.labels_
-print(y_pred)
+labels = dbscan.labels_
+pd.DataFrame(labels, columns=['cluster']).to_csv(
+    'results/dbscan/raw.csv', index=False)
 
 # Persist model and metadata
 joblib_filename = 'models/dbscan.joblib'

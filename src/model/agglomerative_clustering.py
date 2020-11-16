@@ -17,9 +17,6 @@ model = dict({
         'datetime': str(datetime.now()),
         'hyperparameters': {
             'n_clusters': n_clusters
-        },
-        'metrics': {
-            'silhouette coefficient': 0
         }
     }
 })
@@ -27,10 +24,11 @@ model = dict({
 # Read the processed data from the EDA
 X = pd.read_csv('data/processed/processed.csv')
 
-# Train model
+# Cluster and save results
 agglomerative_clustering.fit_predict(X)
-y_pred = agglomerative_clustering.labels_
-print(y_pred)
+labels = agglomerative_clustering.labels_
+pd.DataFrame(labels, columns=['cluster']).to_csv(
+    'results/agglomerative_clustering/raw.csv', index=False)
 
 # Persist model and metadata
 joblib_filename = 'models/agglomerative_clustering.joblib'

@@ -4,7 +4,9 @@ import joblib
 from datetime import datetime
 
 # Hyperparameters
-n_clusters = 20
+n_clusters = 2
+threshold = 0.6
+branching_factor = 10
 
 # Initialize BIRCH model
 birch = Birch(n_clusters=n_clusters)
@@ -16,10 +18,9 @@ model = dict({
         'abbreviation': 'birch',
         'datetime': str(datetime.now()),
         'hyperparameters': {
-            'n_clusters': n_clusters
-        },
-        'metrics': {
-            'silhouette coefficient': 0
+            'n_clusters': n_clusters,
+            'threshold': threshold,
+            'branching_factor': branching_factor
         }
     }
 })
@@ -27,10 +28,11 @@ model = dict({
 # Read the processed data from the EDA
 X = pd.read_csv('data/processed/processed.csv')
 
-# Train model
+# Cluster and save results
 birch.fit_predict(X)
-y_pred = birch.labels_
-print(y_pred)
+labels = birch.labels_
+pd.DataFrame(labels, columns=['cluster']).to_csv(
+    'results/birch/raw.csv', index=False)
 
 # Train model
 joblib_filename = 'models/birch.joblib'

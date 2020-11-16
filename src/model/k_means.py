@@ -17,9 +17,6 @@ model = dict({
         'datetime': str(datetime.now()),
         'hyperparameters': {
             'n_clusters': k,
-        },
-        'metrics': {
-            'silhouette coefficient': 0
         }
     }
 })
@@ -27,10 +24,11 @@ model = dict({
 # Read the processed data from the EDA
 X = pd.read_csv('data/processed/processed.csv')
 
-# Train model
+# Cluster and save results
 k_means.fit_predict(X)
-y_pred = k_means.labels_
-print(y_pred)
+labels = k_means.labels_
+pd.DataFrame(labels, columns=['cluster']).to_csv(
+    'results/k_means/raw.csv', index=False)
 
 # Persist model and metadata
 joblib_filename = 'models/k_means.joblib'

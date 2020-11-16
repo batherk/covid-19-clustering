@@ -28,9 +28,6 @@ model = dict({
             'n_init': n_init,
             'affinity': affinity,
             'assign_labels': assign_labels
-        },
-        'metrics': {
-            'silhouette coefficient': 0
         }
     }
 })
@@ -38,10 +35,11 @@ model = dict({
 # Read the processed data from the EDA
 X = pd.read_csv('data/processed/processed.csv')
 
-# Train model
+# Cluster and save results
 spectral_clustering.fit_predict(X)
-y_pred = spectral_clustering.labels_
-print(y_pred)
+labels = spectral_clustering.labels_
+pd.DataFrame(labels, columns=['cluster']).to_csv(
+    'results/spectral_clustering/raw.csv', index=False)
 
 # Persist model and metadata
 joblib_filename = 'models/spectral_clustering.joblib'

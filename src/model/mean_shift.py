@@ -16,9 +16,6 @@ model = dict({
         'abbreviation': 'MS',
         'datetime': str(datetime.now()),
         'hyperparameters': {
-        },
-        'metrics': {
-            'silhouette coefficient': 0
         }
     }
 })
@@ -26,10 +23,11 @@ model = dict({
 # Read the processed data from the EDA
 X = pd.read_csv('data/processed/processed.csv')
 
-# Train model
+# Cluster and save results
 mean_shift.fit_predict(X)
-y_pred = mean_shift.labels_
-print(y_pred)
+labels = mean_shift.labels_
+pd.DataFrame(labels, columns=['cluster']).to_csv(
+    'results/mean_shift/raw.csv', index=False)
 
 # Persist model and metadata
 joblib_filename = 'models/mean_shift.joblib'
