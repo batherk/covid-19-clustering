@@ -4,10 +4,7 @@ import joblib
 from datetime import datetime
 
 # Hyperparameters
-n_clusters = 20
-n_init = 100
-affinity = 'rbf'
-assign_labels = 'discretize'
+
 
 # Initialize mean shift
 mean_shift = MeanShift()
