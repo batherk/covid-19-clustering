@@ -1,7 +1,11 @@
-import pandas as pd
-from sklearn.cluster import Birch
+# type: ignore
+import pathmagic  # noqa
 import joblib
+import pandas as pd
 from datetime import datetime
+from src.utils import save_clustering_metrics
+from sklearn.cluster import Birch
+
 
 # Hyperparameters
 n_clusters = 2
@@ -33,6 +37,8 @@ birch.fit_predict(X)
 labels = birch.labels_
 pd.DataFrame(labels, columns=['cluster']).to_csv(
     'results/birch/raw.csv', index=False)
+
+save_clustering_metrics(X, labels, 'results/birch')
 
 # Train model
 joblib_filename = 'models/birch.joblib'

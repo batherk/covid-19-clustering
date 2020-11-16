@@ -1,7 +1,10 @@
-import pandas as pd
-from sklearn.cluster import DBSCAN
+# type: ignore
+import pathmagic  # noqa
 import joblib
+import pandas as pd
 from datetime import datetime
+from src.utils import save_clustering_metrics
+from sklearn.cluster import DBSCAN
 
 # Hyperparameters
 eps = 0.95
@@ -31,6 +34,8 @@ dbscan.fit_predict(X)
 labels = dbscan.labels_
 pd.DataFrame(labels, columns=['cluster']).to_csv(
     'results/dbscan/raw.csv', index=False)
+
+save_clustering_metrics(X, labels, 'results/dbscan')
 
 # Persist model and metadata
 joblib_filename = 'models/dbscan.joblib'

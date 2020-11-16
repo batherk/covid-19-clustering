@@ -1,7 +1,10 @@
-import pandas as pd
-from sklearn.cluster import SpectralClustering
+# type: ignore
+import pathmagic  # noqa
 import joblib
+import pandas as pd
 from datetime import datetime
+from src.utils import save_clustering_metrics
+from sklearn.cluster import SpectralClustering
 
 # Hyperparameters
 n_clusters = 20
@@ -40,6 +43,8 @@ spectral_clustering.fit_predict(X)
 labels = spectral_clustering.labels_
 pd.DataFrame(labels, columns=['cluster']).to_csv(
     'results/spectral_clustering/raw.csv', index=False)
+
+save_clustering_metrics(X, labels, 'results/spectral_clustering')
 
 # Persist model and metadata
 joblib_filename = 'models/spectral_clustering.joblib'

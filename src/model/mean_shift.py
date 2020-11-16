@@ -1,7 +1,10 @@
-import pandas as pd
-from sklearn.cluster import MeanShift
+# type: ignore
+import pathmagic  # noqa
 import joblib
+import pandas as pd
 from datetime import datetime
+from src.utils import save_clustering_metrics
+from sklearn.cluster import MeanShift
 
 # Hyperparameters
 
@@ -28,6 +31,8 @@ mean_shift.fit_predict(X)
 labels = mean_shift.labels_
 pd.DataFrame(labels, columns=['cluster']).to_csv(
     'results/mean_shift/raw.csv', index=False)
+
+save_clustering_metrics(X, labels, 'results/mean_shift')
 
 # Persist model and metadata
 joblib_filename = 'models/mean_shift.joblib'

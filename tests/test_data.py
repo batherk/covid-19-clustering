@@ -1,2 +1,6 @@
+import pathmagic  # noqa
+from src.utils import mapIndexToLocation
+
+
 def test_data():
-    assert 1 == 1
+    assert mapIndexToLocation(145) == 'Norway'
