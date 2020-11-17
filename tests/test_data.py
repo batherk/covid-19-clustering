@@ -1,3 +1,5 @@
+# type: ignore
+import pathsetup  # noqa
 from src.utils import mapIndexToLocation
 
 
