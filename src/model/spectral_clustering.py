@@ -3,7 +3,7 @@ import pathsetup  # noqa
 import joblib
 import pandas as pd
 from datetime import datetime
-from src.utils import save_clustering_metrics
+from src.utils import save_clustering_metrics_as_csv
 from sklearn.cluster import SpectralClustering
 
 # Hyperparameters
@@ -42,9 +42,8 @@ X = pd.read_csv('data/processed/processed.csv')
 spectral_clustering.fit_predict(X)
 labels = spectral_clustering.labels_
 pd.DataFrame(labels, columns=['cluster']).to_csv(
-    'results/spectral_clustering/raw.csv', index=False)
-
-save_clustering_metrics(X, labels, 'results/spectral_clustering')
+    'results/spectral_clustering/clusters.csv', index=False)
+save_clustering_metrics_as_csv(X, labels, 'results/spectral_clustering')
 
 # Persist model and metadata
 joblib_filename = 'models/spectral_clustering.joblib'

@@ -3,7 +3,7 @@ import pathsetup  # noqa
 import joblib
 import pandas as pd
 from datetime import datetime
-from src.utils import save_clustering_metrics
+from src.utils import save_clustering_metrics_as_csv
 from sklearn.cluster import Birch
 
 
@@ -36,10 +36,9 @@ X = pd.read_csv('data/processed/processed.csv')
 birch.fit_predict(X)
 labels = birch.labels_
 pd.DataFrame(labels, columns=['cluster']).to_csv(
-    'results/birch/raw.csv', index=False)
+    'results/birch/clusters.csv', index=False)
+save_clustering_metrics_as_csv(X, labels, 'results/birch')
 
-save_clustering_metrics(X, labels, 'results/birch')
-
-# Train model
+# Persist model and metadata
 joblib_filename = 'models/birch.joblib'
 joblib.dump(model, joblib_filename)

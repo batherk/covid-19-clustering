@@ -7,7 +7,23 @@ def mapIndexToLocation(index):
     return pd.read_csv('data/raw/locations.csv')['location'].get(index)
 
 
-def save_clustering_metrics(X, labels, path):
+def save_clustering_metrics_as_csv(X, labels, path):
+    clustering_metrics = pd.DataFrame({
+        'metric_name': [
+            'Silhouette Coefficient',
+            'Davies-Bouldin Index',
+            'Calinski-Harabasz Index'
+        ],
+        'value': [
+            silhouette_score(X, labels),
+            davies_bouldin_score(X, labels),
+            calinski_harabasz_score(X, labels)
+        ],
+    })
+    clustering_metrics.to_csv(f'{path}/clustering_metrics.csv', index=False)
+
+
+def save_clustering_metrics_as_pdf(X, labels, path):
     silhouette_coefficient = silhouette_score(X, labels)
     davies_bouldin_index = davies_bouldin_score(X, labels)
     calinski_harabasz_index = calinski_harabasz_score(X, labels)
