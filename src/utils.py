@@ -16,6 +16,6 @@ def save_clustering_metrics(X, labels, path):
     with open(f'{path}/clustering_metrics.csv', mode='w', newline='') as clustering_metrics:
         csv_writer = csv.writer(clustering_metrics, delimiter=',')
         csv_writer.writerow(
-            ['Silhouette Score', 'Davies Bouldin Score', 'Calinski-Harabasz Score'])
+            ['Silhouette Score', 'Davies-Bouldin Score', 'Calinski-Harabasz Score'])
         csv_writer.writerow(
             [silhouette_coefficient, davies_bouldin_index, calinski_harabasz_index])
