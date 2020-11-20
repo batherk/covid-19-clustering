@@ -4,24 +4,21 @@ import joblib
 import pandas as pd
 from datetime import datetime
 from src.utils import save_clusters_as_csv, save_clustering_metrics_as_csv
-from sklearn.cluster import DBSCAN
+from sklearn.cluster import MeanShift
 
 # Hyperparameters
-eps = 0.95
-min_samples = 2
 
-# Initialize DBSCAN
-dbscan = DBSCAN(eps=eps, min_samples=min_samples)
+
+# Initialize mean shift
+mean_shift = MeanShift()
 
 model = dict({
-    'model': dbscan,
+    'model': mean_shift,
     'metadata': {
-        'name': 'DBSCAN',
-        'abbreviation': 'dbscan',
+        'name': 'Mean Shift',
+        'abbreviation': 'MS',
         'datetime': str(datetime.now()),
         'hyperparameters': {
-            'eps': eps,
-            'min_samples': min_samples
         }
     }
 })
@@ -30,11 +27,11 @@ model = dict({
 X = pd.read_csv('data/processed/processed.csv')
 
 # Cluster and save results
-dbscan.fit_predict(X)
-labels = dbscan.labels_
-save_clusters_as_csv(labels, 'results/dbscan')
-save_clustering_metrics_as_csv(X, labels, 'results/dbscan')
+mean_shift.fit_predict(X)
+labels = mean_shift.labels_
+save_clusters_as_csv(labels, 'results/mean_shift')
+save_clustering_metrics_as_csv(X, labels, 'results/mean_shift')
 
 # Persist model and metadata
-joblib_filename = 'models/dbscan.joblib'
+joblib_filename = 'models/mean_shift.joblib'
 joblib.dump(model, joblib_filename)

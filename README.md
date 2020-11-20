@@ -55,7 +55,7 @@ The files found in the `notebooks` folder are jupyter notebooks.
 ┣ 📁data (raw and processed csv files)
 ┣ 📁models (persisted models with metadata)
 ┣ 📁notebooks (jupyter notebooks)
-┣ 📁results (clustering assignement and metrics for each model)
+┣ 📁results (clustering assignment and metrics for each model)
 ┣ 📁src
 ┃ ┣ 📂model (Python scripts for training and presisting the models)
 ┃ ┣ 📜__init__.py
