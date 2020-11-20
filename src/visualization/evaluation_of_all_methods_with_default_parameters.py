@@ -48,14 +48,17 @@ plt.bar(methods_x_axis, silhouette_score_avg_per_method,
 plt.xlabel('Clustering methods')
 plt.ylabel('Silhouette score')
 plt.xticks(methods_x_axis, method_abbreviations)
-plt.savefig("results/all_methods_with_default_parameters/silhouette_scores")
+plt.savefig(
+    "results/evaluation/all_methods_with_default_parameters/silhouette_scores")
 
 plt.bar(methods_x_axis, davies_bouldin_score_avg_per_method,
         yerr=davies_bouldin_score_std_per_method, color="blue")
 plt.ylabel('Davies-Bouldin score')
-plt.savefig("results/all_methods_with_default_parameters/davies_bouldin_score")
+plt.savefig(
+    "results/evaluation/all_methods_with_default_parameters/davies_bouldin_score")
 
 plt.bar(methods_x_axis, calinski_harabasz_score_avg_per_method,
         yerr=calinski_harabasz_score_std_per_method, color="blue")
 plt.ylabel('Calinski-Harabasz score')
-plt.savefig("results/all_methods_with_default_parameters/calinski_harabasz_score")
+plt.savefig(
+    "results/evaluation/all_methods_with_default_parameters/calinski_harabasz_score")
