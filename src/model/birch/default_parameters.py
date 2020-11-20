@@ -30,5 +30,5 @@ save_clusters_as_csv(labels, save_path)
 save_clustering_metrics_as_csv(X, labels, save_path)
 
 # Train model
-joblib_filename = 'models/birch/optimized.joblib'
+joblib_filename = 'models/birch/default_parameters.joblib'
 joblib.dump(model, joblib_filename)
