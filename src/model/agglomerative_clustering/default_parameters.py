@@ -6,11 +6,9 @@ from datetime import datetime
 from src.utils import save_clusters_as_csv, save_clustering_metrics_as_csv
 from sklearn.cluster import AgglomerativeClustering
 
-# Hyperparameters
-n_clusters = 20
 
 # Initialize hierarchical clustering with agglomerative clustering
-agglomerative_clustering = AgglomerativeClustering(n_clusters=n_clusters)
+agglomerative_clustering = AgglomerativeClustering()
 
 model = dict({
     'model': agglomerative_clustering,
@@ -18,9 +16,7 @@ model = dict({
         'name': 'Agglomerative Clustering',
         'abbreviation': 'AC',
         'datetime': str(datetime.now()),
-        'hyperparameters': {
-            'n_clusters': n_clusters
-        }
+        'hyperparameters': {}
     }
 })
 
@@ -34,5 +30,5 @@ save_clusters_as_csv(labels, 'results/agglomerative_clustering')
 save_clustering_metrics_as_csv(X, labels, 'results/agglomerative_clustering')
 
 # Persist model and metadata
-joblib_filename = 'models/agglomerative_clustering.joblib'
+joblib_filename = 'models/agglomerative_clustering/default_parameters.joblib'
 joblib.dump(model, joblib_filename)

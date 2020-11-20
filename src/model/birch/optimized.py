@@ -13,13 +13,14 @@ threshold = 0.6
 branching_factor = 10
 
 # Initialize BIRCH model
-birch = Birch(n_clusters=n_clusters)
+birch = Birch(n_clusters=n_clusters, threshold=threshold,
+              branching_factor=branching_factor)
 
 model = dict({
     'model': birch,
     'metadata': {
         'name': 'BIRCH',
-        'abbreviation': 'birch',
+        'abbreviation': 'BI',
         'datetime': str(datetime.now()),
         'hyperparameters': {
             'n_clusters': n_clusters,
@@ -38,6 +39,6 @@ labels = birch.labels_
 save_clusters_as_csv(labels, 'results/birch')
 save_clustering_metrics_as_csv(X, labels, 'results/birch')
 
-# Persist model and metadata
-joblib_filename = 'models/birch.joblib'
+# Train model
+joblib_filename = 'models/birch/optimized.joblib'
 joblib.dump(model, joblib_filename)

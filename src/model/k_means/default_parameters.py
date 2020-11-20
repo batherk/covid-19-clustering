@@ -6,21 +6,16 @@ from datetime import datetime
 from src.utils import save_clusters_as_csv, save_clustering_metrics_as_csv
 from sklearn.cluster import KMeans
 
-# Hyperparameters
-k = 20
-
 # Initialize KMeans
-k_means = KMeans(n_clusters=k)
+k_means = KMeans()
 
 model = dict({
     'model': k_means,
     'metadata': {
         'name': 'k-Means',
-        'abbreviation': 'KMeans',
+        'abbreviation': 'KM',
         'datetime': str(datetime.now()),
-        'hyperparameters': {
-            'n_clusters': k,
-        }
+        'hyperparameters': {}
     }
 })
 
@@ -34,5 +29,5 @@ save_clusters_as_csv(labels, 'results/k_means')
 save_clustering_metrics_as_csv(X, labels, 'results/k_means')
 
 # Persist model and metadata
-joblib_filename = 'models/k_means.joblib'
+joblib_filename = 'models/k_means/default_parameters.joblib'
 joblib.dump(model, joblib_filename)

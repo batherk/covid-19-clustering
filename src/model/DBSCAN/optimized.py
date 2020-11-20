@@ -17,7 +17,7 @@ model = dict({
     'model': dbscan,
     'metadata': {
         'name': 'DBSCAN',
-        'abbreviation': 'dbscan',
+        'abbreviation': 'DBS',
         'datetime': str(datetime.now()),
         'hyperparameters': {
             'eps': eps,
@@ -36,5 +36,5 @@ save_clusters_as_csv(labels, 'results/dbscan')
 save_clustering_metrics_as_csv(X, labels, 'results/dbscan')
 
 # Persist model and metadata
-joblib_filename = 'models/dbscan.joblib'
+joblib_filename = 'models/dbscan_optimized.joblib'
 joblib.dump(model, joblib_filename)

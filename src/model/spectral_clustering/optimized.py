@@ -45,5 +45,5 @@ save_clusters_as_csv(labels, 'results/spectral_clustering')
 save_clustering_metrics_as_csv(X, labels, 'results/spectral_clustering')
 
 # Persist model and metadata
-joblib_filename = 'models/spectral_clustering.joblib'
+joblib_filename = 'models/spectral_clustering/optimized.joblib'
 joblib.dump(model, joblib_filename)
