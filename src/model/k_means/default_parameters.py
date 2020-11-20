@@ -25,8 +25,9 @@ X = pd.read_csv('data/processed/processed.csv')
 # Cluster and save results
 k_means.fit_predict(X)
 labels = k_means.labels_
-save_clusters_as_csv(labels, 'results/k_means')
-save_clustering_metrics_as_csv(X, labels, 'results/k_means')
+save_path = 'results/k_means/default_parameters'
+save_clusters_as_csv(labels, save_path)
+save_clustering_metrics_as_csv(X, labels, save_path)
 
 # Persist model and metadata
 joblib_filename = 'models/k_means/default_parameters.joblib'

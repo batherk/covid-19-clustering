@@ -36,8 +36,9 @@ X = pd.read_csv('data/processed/processed.csv')
 # Cluster and save results
 birch.fit_predict(X)
 labels = birch.labels_
-save_clusters_as_csv(labels, 'results/birch')
-save_clustering_metrics_as_csv(X, labels, 'results/birch')
+save_path = 'results/birch/optimized'
+save_clusters_as_csv(labels, save_path)
+save_clustering_metrics_as_csv(X, labels, save_path)
 
 # Train model
 joblib_filename = 'models/birch/optimized.joblib'

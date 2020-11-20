@@ -1,6 +1,9 @@
+# type: ignore
+import pathsetup  # noqa
 import pandas as pd
 from sklearn.cluster import DBSCAN
 import joblib
+from src.utils import save_clusters_as_csv, save_clustering_metrics_as_csv
 from datetime import datetime
 
 # Initialize DBSCAN
@@ -19,11 +22,13 @@ model = dict({
 # Read the processed data from the EDA
 X = pd.read_csv('data/processed/processed.csv')
 
-# Train model
+# Cluster and save results
 dbscan.fit_predict(X)
-y_pred = dbscan.labels_
-print(y_pred)
+labels = dbscan.labels_
+save_path = 'results/dbscan/default_parameters'
+save_clusters_as_csv(labels, save_path)
+save_clustering_metrics_as_csv(X, labels, save_path)
 
 # Persist model and metadata
-joblib_filename = 'models/dbscan_default_parameters.joblib'
+joblib_filename = 'models/dbscan/default_parameters.joblib'
 joblib.dump(model, joblib_filename)

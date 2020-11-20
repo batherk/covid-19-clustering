@@ -1,8 +1,10 @@
-import pandas as pd
-from sklearn.cluster import SpectralClustering
+# type: ignore
+import pathsetup  # noqa
 import joblib
+import pandas as pd
 from datetime import datetime
-
+from src.utils import save_clusters_as_csv, save_clustering_metrics_as_csv
+from sklearn.cluster import SpectralClustering
 
 # Initialize spectral clusering
 spectral_clustering = SpectralClustering()
@@ -20,10 +22,12 @@ model = dict({
 # Read the processed data from the EDA
 X = pd.read_csv('data/processed/processed.csv')
 
-# Train model
+# Cluster and save results
 spectral_clustering.fit_predict(X)
-y_pred = spectral_clustering.labels_
-print(y_pred)
+labels = spectral_clustering.labels_
+save_path = 'results/spectral_clustering/default_parameters'
+save_clusters_as_csv(labels, save_path)
+save_clustering_metrics_as_csv(X, labels, save_path)
 
 # Persist model and metadata
 joblib_filename = 'models/spectral_clustering/default_parameters.joblib'

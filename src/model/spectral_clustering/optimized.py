@@ -41,8 +41,9 @@ X = pd.read_csv('data/processed/processed.csv')
 # Cluster and save results
 spectral_clustering.fit_predict(X)
 labels = spectral_clustering.labels_
-save_clusters_as_csv(labels, 'results/spectral_clustering')
-save_clustering_metrics_as_csv(X, labels, 'results/spectral_clustering')
+save_path = 'results/spectral_clustering/optimized'
+save_clusters_as_csv(labels, save_path)
+save_clustering_metrics_as_csv(X, labels, save_path)
 
 # Persist model and metadata
 joblib_filename = 'models/spectral_clustering/optimized.joblib'

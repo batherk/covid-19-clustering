@@ -32,9 +32,10 @@ X = pd.read_csv('data/processed/processed.csv')
 # Cluster and save results
 dbscan.fit_predict(X)
 labels = dbscan.labels_
-save_clusters_as_csv(labels, 'results/dbscan')
-save_clustering_metrics_as_csv(X, labels, 'results/dbscan')
+save_path = 'results/dbscan/optimized'
+save_clusters_as_csv(labels, save_path)
+save_clustering_metrics_as_csv(X, labels, save_path)
 
 # Persist model and metadata
-joblib_filename = 'models/dbscan_optimized.joblib'
+joblib_filename = 'models/dbscan/optimized.joblib'
 joblib.dump(model, joblib_filename)
