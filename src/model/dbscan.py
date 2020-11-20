@@ -3,7 +3,7 @@ import pathsetup  # noqa
 import joblib
 import pandas as pd
 from datetime import datetime
-from src.utils import save_clustering_metrics_as_csv
+from src.utils import save_clusters_as_csv, save_clustering_metrics_as_csv
 from sklearn.cluster import DBSCAN
 
 # Hyperparameters
@@ -32,8 +32,7 @@ X = pd.read_csv('data/processed/processed.csv')
 # Cluster and save results
 dbscan.fit_predict(X)
 labels = dbscan.labels_
-pd.DataFrame(labels, columns=['cluster']).to_csv(
-    'results/dbscan/clusters.csv', index=False)
+save_clusters_as_csv(labels, 'results/dbscan')
 save_clustering_metrics_as_csv(X, labels, 'results/dbscan')
 
 # Persist model and metadata

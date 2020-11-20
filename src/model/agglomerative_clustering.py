@@ -3,7 +3,7 @@ import pathsetup  # noqa
 import joblib
 import pandas as pd
 from datetime import datetime
-from src.utils import save_clustering_metrics_as_csv
+from src.utils import save_clusters_as_csv, save_clustering_metrics_as_csv
 from sklearn.cluster import AgglomerativeClustering
 
 # Hyperparameters
@@ -30,10 +30,8 @@ X = pd.read_csv('data/processed/processed.csv')
 # Cluster and save results
 agglomerative_clustering.fit_predict(X)
 labels = agglomerative_clustering.labels_
-pd.DataFrame(labels, columns=['cluster']).to_csv(
-    'results/agglomerative_clustering/clusters.csv', index=False)
-save_clustering_metrics_as_csv(
-    X, labels, 'results/agglomerative_clustering')
+save_clusters_as_csv(labels, 'results/agglomerative_clustering')
+save_clustering_metrics_as_csv(X, labels, 'results/agglomerative_clustering')
 
 # Persist model and metadata
 joblib_filename = 'models/agglomerative_clustering.joblib'

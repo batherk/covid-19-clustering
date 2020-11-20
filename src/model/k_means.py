@@ -3,7 +3,7 @@ import pathsetup  # noqa
 import joblib
 import pandas as pd
 from datetime import datetime
-from src.utils import save_clustering_metrics_as_csv
+from src.utils import save_clusters_as_csv, save_clustering_metrics_as_csv
 from sklearn.cluster import KMeans
 
 # Hyperparameters
@@ -30,8 +30,7 @@ X = pd.read_csv('data/processed/processed.csv')
 # Cluster and save results
 k_means.fit_predict(X)
 labels = k_means.labels_
-pd.DataFrame(labels, columns=['cluster']).to_csv(
-    'results/k_means/clusters.csv', index=False)
+save_clusters_as_csv(labels, 'results/k_means')
 save_clustering_metrics_as_csv(X, labels, 'results/k_means')
 
 # Persist model and metadata
