@@ -1,0 +1,4 @@
+metric_name,value
+Silhouette Coefficient,0.1755553326624271
+Davies-Bouldin Index,1.6049835478501437
+Calinski-Harabasz Index,42.496949146516165

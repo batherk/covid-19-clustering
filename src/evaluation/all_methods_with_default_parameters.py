@@ -4,22 +4,19 @@ from sklearn.metrics import silhouette_score, davies_bouldin_score, calinski_har
 
 data = pd.read_csv('data/processed/processed.csv')
 
-
 model_file_names = [
-    "agglomerative_clustering/default_parameters.joblib",
-    "birch/default_parameters.joblib",
-    "dbscan/default_parameters.joblib",
-    "k_means/default_parameters.joblib",
-    "spectral_clustering/default_parameters.joblib",
-    "mean_shift/default_parameters.joblib"
+    'agglomerative_clustering.joblib',
+    'birch.joblib',
+    'dbscan.joblib',
+    'k_means.joblib',
+    'spectral_clustering.joblib',
+    'mean_shift.joblib'
 ]
 
 models = []
 
 for model_file_name in model_file_names:
-    path = "models/" + model_file_name
-    models.append(joblib.load(path))
-
+    models.append(joblib.load(f'models/{model_file_name}'))
 
 scores = []
 iterations_per_method = 100
@@ -33,4 +30,4 @@ for index, model in enumerate(models):
         scores.append((model, iteration, sc, db, ch))
 
 joblib.dump(
-    scores, "results/evaluation/all_methods_with_default_parameters/scores.joblib")
+    scores, 'results/evaluation/all_methods_with_default_parameters.joblib')
