@@ -6,16 +6,27 @@ from datetime import datetime
 from src.utils import save_clusters_as_csv, save_clustering_metrics_as_csv
 from sklearn.cluster import Birch
 
-# Initialize BIRCH
-birch = Birch()
+
+# Hyperparameters
+n_clusters = 2
+threshold = 0.6
+branching_factor = 10
+
+# Initialize BIRCH model
+birch = Birch(n_clusters=n_clusters, threshold=threshold,
+              branching_factor=branching_factor)
 
 model = dict({
     'model': birch,
     'metadata': {
         'name': 'BIRCH',
-        'abbreviation': 'BIRCH',
+        'abbreviation': 'BI',
         'datetime': str(datetime.now()),
-        'hyperparameters': {}
+        'hyperparameters': {
+            'n_clusters': n_clusters,
+            'threshold': threshold,
+            'branching_factor': branching_factor
+        }
     }
 })
 
@@ -25,10 +36,10 @@ X = pd.read_csv('data/processed/processed.csv')
 # Cluster and save results
 birch.fit_predict(X)
 labels = birch.labels_
-save_path = 'results/birch'
+save_path = 'results/birch/optimized'
 save_clusters_as_csv(labels, save_path)
 save_clustering_metrics_as_csv(X, labels, save_path)
 
 # Train model
-joblib_filename = 'models/birch.joblib'
+joblib_filename = 'models/birch/optimized.joblib'
 joblib.dump(model, joblib_filename)

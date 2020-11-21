@@ -4,18 +4,25 @@ import joblib
 import pandas as pd
 from datetime import datetime
 from src.utils import save_clusters_as_csv, save_clustering_metrics_as_csv
-from sklearn.cluster import Birch
+from sklearn.cluster import DBSCAN
 
-# Initialize BIRCH
-birch = Birch()
+# Hyperparameters
+eps = 0.95
+min_samples = 2
+
+# Initialize DBSCAN
+dbscan = DBSCAN(eps=eps, min_samples=min_samples)
 
 model = dict({
-    'model': birch,
+    'model': dbscan,
     'metadata': {
-        'name': 'BIRCH',
-        'abbreviation': 'BIRCH',
+        'name': 'DBSCAN',
+        'abbreviation': 'DBS',
         'datetime': str(datetime.now()),
-        'hyperparameters': {}
+        'hyperparameters': {
+            'eps': eps,
+            'min_samples': min_samples
+        }
     }
 })
 
@@ -23,12 +30,12 @@ model = dict({
 X = pd.read_csv('data/processed/processed.csv')
 
 # Cluster and save results
-birch.fit_predict(X)
-labels = birch.labels_
-save_path = 'results/birch'
+dbscan.fit_predict(X)
+labels = dbscan.labels_
+save_path = 'results/dbscan/optimized'
 save_clusters_as_csv(labels, save_path)
 save_clustering_metrics_as_csv(X, labels, save_path)
 
-# Train model
-joblib_filename = 'models/birch.joblib'
+# Persist model and metadata
+joblib_filename = 'models/dbscan/optimized.joblib'
 joblib.dump(model, joblib_filename)
