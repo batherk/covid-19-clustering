@@ -14,6 +14,7 @@ Clustering methods being evaluated:
 - BIRCH
 - DBSCAN
 - k-Means
+- Mean Shift
 - Spectral Clustering
 
 ## Data set
@@ -51,16 +52,16 @@ The files found in the `notebooks` folder are jupyter notebooks.
 ```
 📂covid-19-clustering
 ┣ 📁.github (CI config)
-┣ 📁.vscode (editor config)
-┣ 📁data (raw and processed csv files)
+┣ 📁.vscode (vscode editor config)
+┣ 📁data (raw, clean, and processed csv files)
 ┣ 📁models (persisted models with metadata)
 ┣ 📁notebooks (jupyter notebooks)
 ┣ 📁results (clustering assignment and metrics for each model)
 ┣ 📁src
+┃ ┣ 📂evaluation (Python scripts for comparing models)
 ┃ ┣ 📂model (Python scripts for training and presisting the models)
-┃ ┣ 📜__init__.py
+┃ ┣ 📂visualization (Python scripts for making plots)
 ┃ ┣ 📜utils.py
-┃ ┣ 📜visualization.py
 ┣ 📁tests
 ┣ 📜.flake8
 ┣ 📜.gitignore
