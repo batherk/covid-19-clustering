@@ -23,7 +23,7 @@ data.drop(['aged_65_older', 'continent', 'date', 'iso_code', 'new_cases', 'new_c
 'new_cases_smoothed', 'new_cases_smoothed_per_million', 'new_deaths', 'new_deaths_per_million', 
 'new_deaths_smoothed', 'new_deaths_smoothed_per_million', 'new_tests', 'new_tests_per_thousand', 
 'new_tests_smoothed', 'new_tests_smoothed_per_thousand', 'tests_units', 'total_cases', 'total_deaths', 
-'total_tests'], axis=1, inplace=True)
+'total_tests', 'tests_per_case', 'positive_rate'], axis=1, inplace=True)
 
 
 # Save locations and clean data for later refrence. We use location for indexing of the clusters.
@@ -47,8 +47,17 @@ x_scaled = min_max_scaler.fit_transform(x)
 data = pd.DataFrame(x_scaled, columns=data.columns)
 
 
+# Create new re-weighted dataset where covid-features are weighted higher
+data_reweighted = data.copy()
+
+data_reweighted[['total_cases_per_million', 'total_deaths_per_million', 'total_tests_per_thousand','stringency_index']] = data_reweighted[['total_cases_per_million', 'total_deaths_per_million', 'total_tests_per_thousand','stringency_index']]*2
+
+
 # Save processed data to file
 data.to_csv("../data/processed/processed.csv", index=False)
+data.to_csv("../data/processed/processed_reweighted.csv", index=False)
+
+data.describe()
 
 
 
