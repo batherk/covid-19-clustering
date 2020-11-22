@@ -50,10 +50,8 @@ data = pd.DataFrame(x_scaled, columns=data.columns)
 # Create new re-weighted dataset where covid-features are weighted higher
 data_reweighted = data
 
-data_reweighted.total_cases_per_million = data_reweighted.total_cases_per_million*2
-data_reweighted.total_deaths_per_million = data_reweighted.total_deaths_per_million*2
-data_reweighted.total_tests_per_thousand = data_reweighted.total_tests_per_thousand*2
-data_reweighted.stringency_index = data_reweighted.stringency_index*2
+data_reweighted[['total_cases_per_million', 'total_deaths_per_million', 'total_tests_per_thousand','stringency_index']] = 
+data_reweighted[['total_cases_per_million', 'total_deaths_per_million', 'total_tests_per_thousand','stringency_index']]*2
 
 
 # Save processed data to file
