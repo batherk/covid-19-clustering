@@ -8,12 +8,11 @@ from sklearn.cluster import Birch
 
 
 # Hyperparameters
-n_clusters = 2
-threshold = 0.6
-branching_factor = 10
+threshold = 2
+branching_factor = 1
 
 # Initialize BIRCH model
-birch = Birch(n_clusters=n_clusters, threshold=threshold,
+birch = Birch(n_clusters=None, threshold=threshold,
               branching_factor=branching_factor)
 
 model = dict({
@@ -23,7 +22,6 @@ model = dict({
         'abbreviation': 'BI',
         'datetime': str(datetime.now()),
         'hyperparameters': {
-            'n_clusters': n_clusters,
             'threshold': threshold,
             'branching_factor': branching_factor
         }
