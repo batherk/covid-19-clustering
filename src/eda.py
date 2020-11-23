@@ -55,7 +55,7 @@ data_reweighted[['total_cases_per_million', 'total_deaths_per_million', 'total_t
 
 # Save processed data to file
 data.to_csv("../data/processed/processed.csv", index=False)
-data.to_csv("../data/processed/processed_reweighted.csv", index=False)
+data_reweighted.to_csv("../data/processed/processed_reweighted.csv", index=False)
 
 data.describe()
 
