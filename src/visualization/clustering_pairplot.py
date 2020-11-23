@@ -7,7 +7,7 @@ methods = {
     'agglomerative_clustering': pd.read_csv(
         'results/agglomerative_clustering/optimized/clusters.csv'),
     'birch': pd.read_csv(
-        'results/agglomerative_clustering/optimized/clusters.csv')
+        'results/birch/optimized/clusters.csv'),
 }
 
 for method, clustering in methods.items():
