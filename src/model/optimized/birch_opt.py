@@ -8,8 +8,8 @@ from sklearn.cluster import Birch
 
 
 # Hyperparameters
-threshold = 2
-branching_factor = 1
+threshold = 1
+branching_factor = 2
 
 # Initialize BIRCH model
 birch = Birch(n_clusters=None, threshold=threshold,
@@ -39,5 +39,5 @@ save_clusters_as_csv(labels, save_path)
 save_clustering_metrics_as_csv(X, labels, save_path)
 
 # Train model
-joblib_filename = 'models/birch/optimized.joblib'
+joblib_filename = 'models/birch_opt.joblib'
 joblib.dump(model, joblib_filename)
