@@ -8,7 +8,7 @@ from sklearn.cluster import Birch
 
 
 # Hyperparameters
-threshold = 0.7
+threshold = 1
 branching_factor = 2
 
 # Initialize BIRCH model

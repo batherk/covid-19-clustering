@@ -45,15 +45,15 @@ data = pd.DataFrame(x_scaled, columns=data.columns)
 
 
 # Create new re-weighted dataset where covid-features are weighted higher
-data_reweighted = data.copy()
+data_weighted = data.copy()
 
-data_reweighted[['total_cases_per_million', 'total_deaths_per_million', 'total_tests_per_thousand', 'stringency_index']
-                ] = data_reweighted[['total_cases_per_million', 'total_deaths_per_million', 'total_tests_per_thousand', 'stringency_index']] * 2
+data_weighted[['total_cases_per_million', 'total_deaths_per_million', 'total_tests_per_thousand', 'stringency_index']
+              ] = data_weighted[['total_cases_per_million', 'total_deaths_per_million', 'total_tests_per_thousand', 'stringency_index']] * 2
 
 
 # Save processed data to file
 data.to_csv('data/processed/processed.csv', index=False)
-data_reweighted.to_csv(
-    'data/processed/processed_reweighted.csv', index=False)
+data_weighted.to_csv(
+    'data/processed/processed_weighted.csv', index=False)
 
 data.describe()
