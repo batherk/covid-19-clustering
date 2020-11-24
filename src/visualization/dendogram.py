@@ -30,10 +30,10 @@ def plot_dendrogram(model, **kwargs):
 
 
 # setting distance_threshold=0 ensures we compute the full tree.
-model = joblib.load('models/agglomerative_clustering_opt.joblib')['model']
+model = joblib.load('models/agglomerative_clustering_opt_weighted.joblib')['model']
 
 plt.title('Hierarchical Clustering Dendrogram')
 # plot the top three levels of the dendrogram
 plot_dendrogram(model, truncate_mode='level', p=3)
 plt.xlabel('Number of points in node (or index of point if no parenthesis).')
-plt.savefig('results/agglomerative_clustering/optimized/dendrogram.png')
+plt.savefig('results/agglomerative_clustering/optimized_weighted/dendrogram.png')

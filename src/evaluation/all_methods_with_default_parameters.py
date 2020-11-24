@@ -29,5 +29,4 @@ for index, model in enumerate(models):
         ch = calinski_harabasz_score(data, prediction)
         scores.append((model, iteration, sc, db, ch))
 
-joblib.dump(
-    scores, 'results/evaluation/all_methods_with_default_parameters.joblib')
+joblib.dump(scores, 'results/evaluation/all_methods_with_default_parameters.joblib')
