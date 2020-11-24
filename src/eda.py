@@ -20,7 +20,7 @@ data.drop(['aged_65_older', 'continent', 'date', 'new_cases', 'new_cases_per_mil
            'new_cases_smoothed', 'new_cases_smoothed_per_million', 'new_deaths', 'new_deaths_per_million',
            'new_deaths_smoothed', 'new_deaths_smoothed_per_million', 'new_tests', 'new_tests_per_thousand',
            'new_tests_smoothed', 'new_tests_smoothed_per_thousand', 'tests_units', 'total_cases', 'total_deaths',
-           'total_tests', 'tests_per_case', 'positive_rate'], axis=1, inplace=True)
+           'total_tests', 'tests_per_case', 'positive_rate', 'population', 'total_tests_per_thousand', 'handwashing_facilities', 'extreme_poverty'], axis=1, inplace=True)
 
 
 # Save locations and clean data for later refrence. We use location and iso_code for indexing of the clusters.
@@ -47,8 +47,8 @@ data = pd.DataFrame(x_scaled, columns=data.columns)
 # Create new re-weighted dataset where covid-features are weighted higher
 data_weighted = data.copy()
 
-data_weighted[['total_cases_per_million', 'total_deaths_per_million', 'total_tests_per_thousand', 'stringency_index']
-              ] = data_weighted[['total_cases_per_million', 'total_deaths_per_million', 'total_tests_per_thousand', 'stringency_index']] * 2
+data_weighted[['total_cases_per_million', 'total_deaths_per_million', 'stringency_index']
+              ] = data_weighted[['total_cases_per_million', 'total_deaths_per_million', 'stringency_index']] * 2
 
 
 # Save processed data to file
