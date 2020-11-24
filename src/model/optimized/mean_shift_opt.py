@@ -8,7 +8,7 @@ from sklearn.cluster import MeanShift
 
 
 # Hyperparameters
-bandwidth = 0.60
+bandwidth = 0.63
 
 # Initialize mean shift
 mean_shift = MeanShift(bandwidth=bandwidth)
