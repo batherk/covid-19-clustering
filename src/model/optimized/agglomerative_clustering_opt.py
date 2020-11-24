@@ -10,11 +10,12 @@ from sklearn.cluster import AgglomerativeClustering
 affinity = 'euclidean'
 linkage = 'ward'
 distance_threshold = 5.20
+n_clusters = None
 
 
 # Initialize hierarchical clustering with agglomerative clustering
 agglomerative_clustering = AgglomerativeClustering(
-    n_clusters=None,
+    n_clusters=n_clusters,
     affinity=affinity,
     linkage=linkage,
     distance_threshold=distance_threshold
@@ -29,7 +30,8 @@ model = dict({
         'hyperparameters': {
             'affinity': affinity,
             'linkage': linkage,
-            'distance_threshold': distance_threshold
+            'distance_threshold': distance_threshold,
+            'n_clusters':n_clusters
         }
     }
 })
