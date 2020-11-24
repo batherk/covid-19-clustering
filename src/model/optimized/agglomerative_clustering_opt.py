@@ -7,14 +7,18 @@ from src.utils import save_clusters_as_csv, save_clustering_metrics_as_csv
 from sklearn.cluster import AgglomerativeClustering
 
 # Hyperparameters
-affinity = 'l1'
-linkage = 'complete'
-distance_threshold = 6.9
+affinity = 'euclidean'
+linkage = 'ward'
+distance_threshold = 5.20
 
 
 # Initialize hierarchical clustering with agglomerative clustering
-agglomerative_clustering = AgglomerativeClustering(n_clusters=None,
-                                                   affinity=affinity, linkage=linkage, distance_threshold=distance_threshold)
+agglomerative_clustering = AgglomerativeClustering(
+    n_clusters=None,
+    affinity=affinity,
+    linkage=linkage,
+    distance_threshold=distance_threshold
+)
 
 model = dict({
     'model': agglomerative_clustering,

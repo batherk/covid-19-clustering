@@ -8,13 +8,17 @@ from sklearn.cluster import AgglomerativeClustering
 
 # Hyperparameters
 affinity = 'l1'
-linkage = 'complete'
-distance_threshold = 7.9
+linkage = 'average'
+distance_threshold = 3.40
 
 
 # Initialize hierarchical clustering with agglomerative clustering
-agglomerative_clustering = AgglomerativeClustering(n_clusters=None,
-                                                   affinity=affinity, linkage=linkage, distance_threshold=distance_threshold)
+agglomerative_clustering = AgglomerativeClustering(
+    n_clusters=None,
+    affinity=affinity,
+    linkage=linkage,
+    distance_threshold=distance_threshold
+)
 
 model = dict({
     'model': agglomerative_clustering,
