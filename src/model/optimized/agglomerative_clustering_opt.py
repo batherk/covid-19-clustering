@@ -9,7 +9,7 @@ from sklearn.cluster import AgglomerativeClustering
 # Hyperparameters
 affinity = 'euclidean'
 linkage = 'ward'
-distance_threshold = 5.20
+distance_threshold = 5.12
 n_clusters = None
 
 
@@ -31,7 +31,7 @@ model = dict({
             'affinity': affinity,
             'linkage': linkage,
             'distance_threshold': distance_threshold,
-            'n_clusters':n_clusters
+            'n_clusters': n_clusters
         }
     }
 })
