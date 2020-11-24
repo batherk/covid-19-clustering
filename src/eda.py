@@ -16,11 +16,13 @@ data.drop(data[data['location'] == 'World'].index, inplace=True)
 data.drop(data[data['location'] == 'International'].index, inplace=True)
 
 # Drop rows not considered to be important for the analysis. The EDA-notebook for explanation.
-data.drop(['aged_65_older', 'continent', 'date', 'new_cases', 'new_cases_per_million',
-           'new_cases_smoothed', 'new_cases_smoothed_per_million', 'new_deaths', 'new_deaths_per_million',
-           'new_deaths_smoothed', 'new_deaths_smoothed_per_million', 'new_tests', 'new_tests_per_thousand',
-           'new_tests_smoothed', 'new_tests_smoothed_per_thousand', 'tests_units', 'total_cases', 'total_deaths',
-           'total_tests', 'tests_per_case', 'positive_rate', 'population', 'total_tests_per_thousand', 'handwashing_facilities', 'extreme_poverty'], axis=1, inplace=True)
+data.drop(
+    ['aged_65_older', 'continent', 'date', 'new_cases', 'new_cases_per_million', 'new_cases_smoothed',
+     'new_cases_smoothed_per_million', 'new_deaths', 'new_deaths_per_million', 'new_deaths_smoothed',
+     'new_deaths_smoothed_per_million', 'new_tests', 'new_tests_per_thousand', 'new_tests_smoothed',
+     'new_tests_smoothed_per_thousand', 'tests_units', 'total_cases', 'total_deaths', 'total_tests', 'tests_per_case',
+     'positive_rate', 'population', 'total_tests_per_thousand', 'handwashing_facilities', 'extreme_poverty'],
+    axis=1, inplace=True)
 
 
 # Save locations and clean data for later refrence. We use location and iso_code for indexing of the clusters.
