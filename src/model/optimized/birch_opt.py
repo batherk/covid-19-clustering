@@ -12,14 +12,17 @@ threshold = 0.7
 branching_factor = 2
 
 # Initialize BIRCH model
-birch = Birch(n_clusters=None, threshold=threshold,
-              branching_factor=branching_factor)
+birch = Birch(
+    n_clusters=None,
+    threshold=threshold,
+    branching_factor=branching_factor
+)
 
 model = dict({
     'model': birch,
     'metadata': {
         'name': 'BIRCH',
-        'abbreviation': 'BI',
+        'abbreviation': 'BIRCH',
         'datetime': str(datetime.now()),
         'hyperparameters': {
             'threshold': threshold,
