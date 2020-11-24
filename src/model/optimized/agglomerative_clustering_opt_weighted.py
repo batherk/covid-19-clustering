@@ -9,7 +9,7 @@ from sklearn.cluster import AgglomerativeClustering
 # Hyperparameters
 affinity = 'l1'
 linkage = 'complete'
-distance_threshold = 6.9
+distance_threshold = 7.9
 
 
 # Initialize hierarchical clustering with agglomerative clustering
@@ -31,15 +31,15 @@ model = dict({
 })
 
 # Read the processed data from the EDA
-X = pd.read_csv('data/processed/processed.csv')
+X = pd.read_csv('data/processed/processed_weighted.csv')
 
 # Cluster and save results
 agglomerative_clustering.fit_predict(X)
 labels = agglomerative_clustering.labels_
-save_path = 'results/agglomerative_clustering/optimized'
+save_path = 'results/agglomerative_clustering/optimized_weighted'
 save_clusters_as_csv(labels, save_path)
 save_clustering_metrics_as_csv(X, labels, save_path)
 
 # Persist model and metadata
-joblib_filename = 'models/agglomerative_clustering_opt.joblib'
+joblib_filename = 'models/agglomerative_clustering_opt_weighted.joblib'
 joblib.dump(model, joblib_filename)

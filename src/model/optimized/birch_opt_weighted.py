@@ -29,15 +29,15 @@ model = dict({
 })
 
 # Read the processed data from the EDA
-X = pd.read_csv('data/processed/processed.csv')
+X = pd.read_csv('data/processed/processed_weighted.csv')
 
 # Cluster and save results
 birch.fit_predict(X)
 labels = birch.labels_
-save_path = 'results/birch/optimized'
+save_path = 'results/birch/optimized_weighted'
 save_clusters_as_csv(labels, save_path)
 save_clustering_metrics_as_csv(X, labels, save_path)
 
 # Train model
-joblib_filename = 'models/birch_opt.joblib'
+joblib_filename = 'models/birch_opt_weighted.joblib'
 joblib.dump(model, joblib_filename)
