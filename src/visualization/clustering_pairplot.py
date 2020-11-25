@@ -6,8 +6,8 @@ data = pd.read_csv('data/processed/processed.csv')
 methods = {
     'agglomerative_clustering': pd.read_csv(
         'results/agglomerative_clustering/optimized/clusters.csv'),
-    'birch': pd.read_csv(
-        'results/birch/optimized/clusters.csv'),
+    'mean_shift': pd.read_csv(
+        'results/mean_shift/optimized/clusters.csv'),
 }
 
 for method, clustering in methods.items():
