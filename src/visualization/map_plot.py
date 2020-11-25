@@ -8,7 +8,7 @@ methods = {
     'agglomerative_clustering_weighted': pd.read_csv(
         'results/agglomerative_clustering/optimized_weighted/clusters.csv'),
     'mean_shift': pd.read_csv(
-        'results/mean_shift/optimized/clusters.csv'),
+        'results/mean_shift/optimized/clusters_renamed.csv'),
     'mean_shift_weighted': pd.read_csv(
         'results/mean_shift/optimized_weighted/clusters.csv')
 }
