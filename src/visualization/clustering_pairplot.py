@@ -11,6 +11,9 @@ methods = {
 }
 
 for method, clustering in methods.items():
-    sns.pairplot(pd.concat([data, clustering], axis=1),
-                 hue='cluster', palette='Set2')
+    sns.pairplot(
+        pd.concat([data, clustering], axis=1),
+        hue='cluster',
+        palette='Set2'
+    )
     plt.savefig(f'results/evaluation/{method}_pairplot.png')

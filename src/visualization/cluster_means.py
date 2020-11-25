@@ -18,7 +18,7 @@ methods = {
 
 for method, clustering in methods.items():
     g = sns.PairGrid(
-        pd.concat([data, clustering], axis=1),
+        pd.concat([data, clustering], axis=1).sort_values(by=['cluster']),
         x_vars=features,
         y_vars='cluster'
     )
