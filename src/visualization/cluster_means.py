@@ -6,14 +6,14 @@ import matplotlib.pyplot as plt
 data = pd.read_csv('data/processed/processed.csv')
 features = np.array(data.columns)
 methods = {
-    'agglomerative_clustering_opt': pd.read_csv(
+    'agglomerative_clustering': pd.read_csv(
         'results/agglomerative_clustering/optimized/clusters.csv').applymap(str),
     'agglomerative_clustering_opt_weighted': pd.read_csv(
         'results/agglomerative_clustering/optimized_weighted/clusters.csv').applymap(str),
-    'birch': pd.read_csv(
-        'results/birch/optimized/clusters.csv').applymap(str),
-    'birch_opt_weighted': pd.read_csv(
-        'results/birch/optimized_weighted/clusters.csv').applymap(str)
+    'mean_shift': pd.read_csv(
+        'results/mean_shift/optimized/clusters.csv').applymap(str),
+    'mean_shift_weighted': pd.read_csv(
+        'results/mean_shift/optimized_weighted/clusters.csv').applymap(str)
 }
 
 for method, clustering in methods.items():
