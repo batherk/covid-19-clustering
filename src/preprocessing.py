@@ -1,4 +1,4 @@
-# THIS FILE cleans data according to the step-wise process illustrated in the notebook
+# This is data cleaning and processing script based on the EDA notebook.
 
 import pandas as pd
 from sklearn.experimental import enable_iterative_imputer
@@ -15,7 +15,7 @@ data.drop(data[data['date'] != '2020-10-01'].index, inplace=True)
 data.drop(data[data['location'] == 'World'].index, inplace=True)
 data.drop(data[data['location'] == 'International'].index, inplace=True)
 
-# Drop rows not considered to be important for the analysis. The EDA-notebook for explanation.
+# Drop rows not considered to be important for the analysis. See the related EDA notebook for explanation.
 data.drop(
     ['aged_65_older', 'continent', 'date', 'new_cases', 'new_cases_per_million', 'new_cases_smoothed',
      'new_cases_smoothed_per_million', 'new_deaths', 'new_deaths_per_million', 'new_deaths_smoothed',
@@ -25,28 +25,27 @@ data.drop(
     axis=1, inplace=True)
 
 
-# Save locations and clean data for later refrence. We use location and iso_code for indexing of the clusters.
+# Save locations and clean data for later refrence. We use location and iso_code for visualization.
 data['location'].to_csv('data/raw/locations.csv', index=False)
 data.to_csv('data/clean/clean.csv', index=False)
 
-# Drop location and iso_code as these are unique values and does not offer anything to the clustering. We save the features for future indexing of clusters.
+# Drop location and iso_code as these are unique values and does not offer anything to the clustering.
 data.drop(['location', 'iso_code'], axis=1, inplace=True)
 
 # Implement imputer, fit model to data, and impute missing values
 imp_mean = IterativeImputer(random_state=0)
 imp_mean.fit(data)
-
 imputed_df = imp_mean.transform(data)
 data = pd.DataFrame(imputed_df, columns=data.columns)
 
 # Scale data using normalization to better comply with distance based clustering methods
-x = data.values  # returns a numpy array
+X = data.values
 min_max_scaler = preprocessing.MinMaxScaler()
-x_scaled = min_max_scaler.fit_transform(x)
+x_scaled = min_max_scaler.fit_transform(X)
 data = pd.DataFrame(x_scaled, columns=data.columns)
 
 
-# Create new re-weighted dataset where covid-features are weighted higher
+# Create new re-weighted dataset where COVID-19 features are weighted higher
 data_weighted = data.copy()
 
 data_weighted[['total_cases_per_million', 'total_deaths_per_million', 'stringency_index']
@@ -55,7 +54,4 @@ data_weighted[['total_cases_per_million', 'total_deaths_per_million', 'stringenc
 
 # Save processed data to file
 data.to_csv('data/processed/processed.csv', index=False)
-data_weighted.to_csv(
-    'data/processed/processed_weighted.csv', index=False)
-
-data.describe()
+data_weighted.to_csv('data/processed/processed_weighted.csv', index=False)
