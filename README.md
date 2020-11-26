@@ -27,12 +27,13 @@ country-by-country data on mortality risk of the COVID-19 pandemic.
 
 ## Prerequisites
 
-- Python (version 3.8 or higher)
-- Some kind of package manager. We recomend using [anaconda](https://www.anaconda.com/products/individual) or the default [pip](https://pip.pypa.io/en/stable/).
+- [Python](https://www.python.org/downloads/) (version 3.8 or higher)
+- Some kind of package manager. We recomend using [conda](https://www.anaconda.com/products/individual) or [pip](https://pip.pypa.io/en/stable/).
 
 ## Installing dependencies
+All the project dependencies are listed and pinned to a specific version in [requirements.txt](requirements.txt) which can easily be installed.
 
-If you are using anaconda, run the following at the command-line:
+If you are using conda, run the following at the command-line:
 
 ```
 conda install --file requirements.txt
@@ -44,10 +45,21 @@ If you are using pip, run the following at the command-line:
 pip install -r requirements.txt
 ```
 
-# File strucure
+# Running scripts
 
+**Important!** All the python files are assumed to be executed from root. Do not try to change directory into a sub-folder (such as src). 
+Correct usage:
+```
+.../covid-19-clustering python src/preprocessing.py
+```
+Wrong usage:
+```
+.../covid-19-clustering/src python preprocessing.py
+```
+
+# File strucure
 The files found in the `notebooks` folder are jupyter notebooks.
-`data` contains raw csv files, as well as processed.
+`data` contains raw csv files from OWID, as well as processed and cleaned files.
 
 ```
 📂covid-19-clustering
@@ -56,11 +68,12 @@ The files found in the `notebooks` folder are jupyter notebooks.
 ┣ 📁data (raw, clean, and processed csv files)
 ┣ 📁models (persisted models with metadata)
 ┣ 📁notebooks (jupyter notebooks)
-┣ 📁results (clustering assignment and metrics for each model)
+┣ 📁results (clustering assignment and metrics for each model as well as plots)
 ┣ 📁src
 ┃ ┣ 📂evaluation (Python scripts for comparing models)
 ┃ ┣ 📂model (Python scripts for training and presisting the models)
-┃ ┣ 📂visualization (Python scripts for making plots)
+┃ ┣ 📂visualization (Python scripts for making visualizations)
+┃ ┣ 📜preprocessing.py (Same as EDA in 📁notebooks for data cleaning and processing)
 ┃ ┣ 📜utils.py
 ┣ 📁tests
 ┣ 📜.flake8
