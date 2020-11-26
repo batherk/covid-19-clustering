@@ -73,12 +73,12 @@ The files found in the `notebooks` folder are jupyter notebooks.
 ┃ ┣ 📂evaluation (Python scripts for comparing models)
 ┃ ┣ 📂model (Python scripts for training and presisting the models)
 ┃ ┣ 📂visualization (Python scripts for making visualizations)
-┃ ┣ 📜preprocessing.py (Same as EDA in 📁notebooks for data cleaning and processing)
+┃ ┣ 📜preprocessing.py (Same as EDA in 📁notebooks for data cleaning and preprocessing)
 ┃ ┣ 📜utils.py
 ┣ 📁tests
 ┣ 📜.flake8
 ┣ 📜.gitignore
 ┣ 📜project_proposal.md
 ┣ 📜README.md (this file)
-┣ 📜requirements.txt (3rd-party packages)
+┣ 📜requirements.txt (3rd-party dependencies / packages)
 ```
