@@ -47,12 +47,13 @@ pip install -r requirements.txt
 
 # Running scripts
 
-**Important!** All the python files are assumed to be executed from root. Do not try to change directory into a sub-folder (such as src). 
-Correct usage:
+**Important!** All the python files are assumed to be executed from root. Do not try to run scripts from a sub directory (such as src). 
+
+👍 Example of **correct** usage:
 ```
 .../covid-19-clustering python src/preprocessing.py
 ```
-Wrong usage:
+👎 Example of **incorrect** usage:
 ```
 .../covid-19-clustering/src python preprocessing.py
 ```
