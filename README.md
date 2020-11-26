@@ -50,11 +50,11 @@ pip install -r requirements.txt
 **Important!** All the python files are assumed to be executed from root. Do not try to run scripts from a sub directory (such as src). 
 
 👍 Example of **correct** usage:
-```
+```fish
 .../covid-19-clustering python src/preprocessing.py
 ```
 👎 Example of **incorrect** usage:
-```
+```fish
 .../covid-19-clustering/src python preprocessing.py
 ```
 
